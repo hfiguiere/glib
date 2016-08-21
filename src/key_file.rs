@@ -21,6 +21,19 @@ impl KeyFile {
         }
     }
 
+    #[cfg(feature = "v2_40")]
+    pub fn save_to_file<T: AsRef<std::path::Path>>(&self, filename: T) -> Result<(), Error> {
+        unsafe {
+            let mut error = ptr::null_mut();
+            let _ = ffi::g_key_file_save_to_file(self.to_glib_none().0, filename.as_ref().to_glib_none().0, &mut error);
+            if error.is_null() {
+                Ok(())
+            } else {
+                Err(from_glib_full(error))
+            }
+        }
+    }
+
     pub fn load_from_data_dirs<T: AsRef<std::path::Path>>(&self, file: T, flags: KeyFileFlags) -> Result<path::PathBuf, Error> {
         unsafe {
             let mut error = ptr::null_mut();

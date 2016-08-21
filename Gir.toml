@@ -34,3 +34,7 @@ status = "generate"
        [[object.function]]
        name = "error_quark"
        ignore = true
+       [[object.function]]
+       name = "save_to_file"
+       # file parameter needs to be a PathBuf
+       ignore = true

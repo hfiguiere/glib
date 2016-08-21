@@ -181,15 +181,6 @@ impl KeyFile {
         }
     }
 
-    #[cfg(feature = "v2_40")]
-    pub fn save_to_file(&self, filename: &str) -> Result<(), Error> {
-        unsafe {
-            let mut error = ptr::null_mut();
-            let _ = ffi::g_key_file_save_to_file(self.to_glib_none().0, filename.to_glib_none().0, &mut error);
-            if error.is_null() { Ok(()) } else { Err(from_glib_full(error)) }
-        }
-    }
-
     pub fn set_boolean(&self, group_name: &str, key: &str, value: bool) {
         unsafe {
             ffi::g_key_file_set_boolean(self.to_glib_none().0, group_name.to_glib_none().0, key.to_glib_none().0, value.to_glib());

@@ -138,7 +138,7 @@ where F: FnMut() -> Continue + Send + 'static {
 ///
 /// For historical reasons, the native function always returns true, so we
 /// ignore it here.
-pub fn source_remove(source_id: Id) {
+pub fn source_remove(source_id: &Id) {
     unsafe {
         glib_ffi::g_source_remove(source_id.to_glib());
     }

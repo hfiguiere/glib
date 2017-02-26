@@ -17,6 +17,7 @@ ignore = [
 manual = [
     "GLib.Bytes",
     "GLib.Error",
+    "GLib.SourceFuncs",
     "GLib.Variant",
     "GLib.VariantType",
     "GObject.Object",
@@ -37,4 +38,27 @@ status = "generate"
        [[object.function]]
        name = "save_to_file"
        # file parameter needs to be a PathBuf
+       ignore = true
+
+[[object]]
+name = "GLib.Source"
+status = "generate"
+       [[object.function]]
+       name = "get_id"
+       ignore = true
+       [[object.function]]
+       name = "remove"
+       ignore = true
+       [[object.function]]
+       name = "set_name_by_id"
+       ignore = true
+
+[[object]]
+name = "GLib.MainContext"
+status = "generate"
+       [[object.function]]
+       name = "prepare"
+       ignore = true
+       [[object.function]]
+       name = "find_source_by_id"
        ignore = true

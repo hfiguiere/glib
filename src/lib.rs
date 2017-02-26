@@ -98,8 +98,11 @@ pub use source::{
     idle_add,
     timeout_add,
     timeout_add_seconds,
-    source_remove,
-    Id as SourceId,
+    Source,
+    SourceId,
+};
+pub use source_funcs::{
+    SourceFuncs,
 };
 pub use types::{
     StaticType,
@@ -173,9 +176,11 @@ pub mod error;
 mod enums;
 mod file_error;
 mod key_file;
+mod main_context;
 pub mod prelude;
 pub mod signal;
 mod source;
+mod source_funcs;
 mod time_val;
 pub mod translate;
 pub mod types;
